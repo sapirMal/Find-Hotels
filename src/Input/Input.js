@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import InputLocation from './InputLocation';
 import InputDates from './InputDates';
+import InputRooms from "./InputRooms";
+
 
 class Input extends Component {
     state = {
@@ -57,6 +59,7 @@ class Input extends Component {
                     legalDate={(event) => this.checklegalDate(event)}
                 // min_end={} //value-start + 1
                 />
+                <InputRooms/>
             </div>
         )
     }
