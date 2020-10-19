@@ -5,51 +5,101 @@ class InputRooms extends Component{
 
     state = {
         numOfRooms: 1,
-        numOfGuests: 2
+        numOfGuests: 2,
+        showMinusRooms: true,
+        showMinusGuests: false
     }
 
     incrementValueRooms = () => {
-        const currRoomsValue = this.state.numOfRooms;
-        const currGuestsValue = this.state.numOfGuests;
-        if (currGuestsValue < currRoomsValue + 1)
-            this.setState(
-                {numOfGuests: currGuestsValue + 1});
-        this.setState({
-            numOfRooms: currRoomsValue + 1
+        this.setState((prevState, props) =>
+        {
+            if (prevState.numOfGuests <= prevState.numOfRooms + 1)
+                return {numOfGuests: prevState.numOfRooms + 1,
+                        showMinusGuests: true};
+        });
+
+        this.setState((prevState, props) => {
+            return {numOfRooms: prevState.numOfRooms + 1,
+                    showMinusRooms: false};
         });
     };
 
     decrementValueRooms = () => {
-        const currValue = this.state.numOfRooms;
-        if(currValue > 1)
-            this.setState(
-                {numOfRooms: currValue - 1})
+        this.setState((prevState, props) => {
+                if (prevState.numOfRooms > 2)
+                    return {numOfRooms: prevState.numOfRooms - 1};
+                else
+                    return {
+                        numOfRooms: prevState.numOfRooms - 1,
+                        showMinusRooms: true
+                    };
+            }
+        )
     };
 
 
     incrementValueGuests = () => {
-        const currValue = this.state.numOfGuests;
-        this.setState(
-            {numOfGuests: currValue + 1});
+        this.setState((prevState, props) => {
+            if(prevState.numOfGuests + 1 > prevState.numOfRooms)
+                return {numOfGuests: prevState.numOfGuests + 1,
+                        showMinusGuests: false}
+            else
+                return {numOfGuests: prevState.numOfGuests + 1,
+                    showMinusGuests: true}
+        });
     };
 
     decrementValueGuests = () => {
-        const currValue = this.state.numOfGuests;
-        if(currValue - 1 >= this.state.numOfRooms)
-            this.setState(
-                {numOfGuests: currValue - 1})
+        this.setState((prevState, props) => {
+            if(prevState.numOfGuests -1 > prevState.numOfRooms)
+                return {
+                    numOfGuests: prevState.numOfGuests - 1
+                }
+            else if(prevState.numOfGuests -1 == prevState.numOfRooms)
+                return {
+                    numOfGuests: prevState.numOfGuests - 1,
+                    showMinusGuests: true
+                }
+        });
     };
 
 
     render(){
         return (
             <span className="input-group">
-                <input type="button" onClick={this.decrementValueRooms} value="-" className="button-minus" data-field="quantity"/>
-                    <input type="number" value={this.state.numOfRooms}  name="quantity" className="quantity-field" readOnly />
-                        <input type="button" onClick={this.incrementValueRooms} value="+" className="button-plus" data-field="quantity"/>
-                <input type="button" onClick={this.decrementValueGuests} value="-" className="button-minus" data-field="quantity"/>
-                    <input type="number" value={this.state.numOfGuests}  name="quantity" className="quantity-field" readOnly />
-                        <input type="button" onClick={this.incrementValueGuests} value="+" className="button-plus" data-field="quantity"/>
+                <label>Rooms:</label>
+                <input type="button"
+                       disabled={this.state.showMinusRooms}
+                       onClick={this.decrementValueRooms}
+                       value="-"
+                       className="button-minus"
+                       data-field="quantity"/>
+                <input type="number"
+                       value={this.state.numOfRooms}
+                       name="quantity"
+                       className="quantity-field" readOnly />
+                <input type="button"
+                       onClick={this.incrementValueRooms}
+                       value="+"
+                       className="button-plus"
+                       data-field="quantity"/>
+
+                 <label>Guests:</label>
+                <input type="button"
+                       disabled={this.state.showMinusGuests}
+                       onClick={this.decrementValueGuests}
+                       value="-"
+                       className="button-minus"
+                       data-field="quantity"/>
+                <input type="number"
+                       value={this.state.numOfGuests}
+                       name="quantity"
+                       className="quantity-field" readOnly />
+                <input type="button"
+                       onClick={this.incrementValueGuests}
+                       value="+"
+                       className="button-plus"
+                       data-field="quantity"/>
             </span>
         );
     }

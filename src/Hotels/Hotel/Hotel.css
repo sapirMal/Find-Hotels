@@ -1,0 +1,21 @@
+.card{
+    border: 1px solid black;
+    width: 60vw;
+    margin: 10px auto;
+    padding: 10px;
+    display: flex;
+}
+
+.hotel_image{
+    border: 1px solid hotpink;
+    padding: 10%;
+    width: 20%;
+    margin-right: 7px;
+}
+
+.hotel_description{
+    width: 30%;
+    border: 1px solid aqua;
+    padding: 10px;
+    text-align: center;
+}

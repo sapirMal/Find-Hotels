@@ -16,6 +16,7 @@ const input_dates = (props) => {
                 // defaultValue={props.initValue}
                 min={props.minStart}>
             </input>
+            {/*<label style={styleComment1}>Date must be present or future</label>*/}
             <input
                 type="date"
                 disabled={props.show}
@@ -23,9 +24,8 @@ const input_dates = (props) => {
                 onChange={props.legalDate}
             >
             </input>
-            <br />
-            <span style={styleComment1}>Date must be present or futur</span>
-            <span style={styleComment2}>Date must be after start date</span>
+            {/*<label style={styleComment2}>Date must be after start date</label>*/}
+            {/* TODO: handle message to user when typing invalid date*/}
         </span>
     )
 }
