@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './InputRooms.css';
+import Aux from '../../../hoc/Auxiliary';
 
 class InputRooms extends Component{
 
@@ -66,7 +67,7 @@ class InputRooms extends Component{
 
     render(){
         return (
-            <span className="input-group">
+            <Aux className="input-group">
                 <label>Rooms:</label>
                 <input type="button"
                        disabled={this.state.showMinusRooms}
@@ -100,7 +101,7 @@ class InputRooms extends Component{
                        value="+"
                        className="button-plus"
                        data-field="quantity"/>
-            </span>
+            </Aux>
         );
     }
 }

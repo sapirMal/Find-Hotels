@@ -7,10 +7,13 @@
 }
 
 .hotel_image{
-    border: 1px solid hotpink;
-    padding: 10%;
     width: 20%;
     margin-right: 7px;
+}
+
+.hotel_image img{
+    width: 100%;
+    height: 100%;
 }
 
 .hotel_description{

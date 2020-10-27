@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import InputLocation from './InputLocation';
-import InputDates from './InputDates';
-import InputRooms from "./InputRooms";
+import InputLocation from '../../components/InputLocation/InputLocation';
+import InputDates from '../../components/InputDates/InputDates';
+import InputRooms from "./InputRooms/InputRooms";
 
 
 class Input extends Component {

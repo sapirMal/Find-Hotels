@@ -2,7 +2,6 @@ import React from 'react';
 import './Hotel.css';
 
 const hotel = (props) => {
-    console.log(props.source);
 
     return (<div className='card'>
                 <div className='hotel_image'>

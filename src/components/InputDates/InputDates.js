@@ -1,4 +1,5 @@
 import React from 'react';
+import Aux from '../../hoc/Auxiliary';
 
 
 
@@ -9,7 +10,7 @@ const input_dates = (props) => {
 
 
     return (
-        <span>
+        <Aux>
             <input
                 type="date"
                 onChange={props.changeDate}
@@ -26,7 +27,7 @@ const input_dates = (props) => {
             </input>
             {/*<label style={styleComment2}>Date must be after start date</label>*/}
             {/* TODO: handle message to user when typing invalid date*/}
-        </span>
+        </Aux>
     )
 }
 
