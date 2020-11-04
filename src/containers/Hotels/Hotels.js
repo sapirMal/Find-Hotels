@@ -3,7 +3,6 @@ import Hotel from '../../components/Hotel/Hotel';
 
 const hotels = (props) => {
     return props.hotels.map((hotel, index) => {
-        console.log(hotel.src.hotelPic);
         return (
             <Hotel
                 key={hotel.id}

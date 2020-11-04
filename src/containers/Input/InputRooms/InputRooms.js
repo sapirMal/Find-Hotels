@@ -56,7 +56,7 @@ class InputRooms extends Component{
                 return {
                     numOfGuests: prevState.numOfGuests - 1
                 }
-            else if(prevState.numOfGuests -1 == prevState.numOfRooms)
+            else if(prevState.numOfGuests -1 === prevState.numOfRooms)
                 return {
                     numOfGuests: prevState.numOfGuests - 1,
                     showMinusGuests: true

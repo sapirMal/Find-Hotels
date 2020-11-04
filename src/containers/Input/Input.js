@@ -6,42 +6,50 @@ import InputRooms from "./InputRooms/InputRooms";
 
 class Input extends Component {
     state = {
-        hideDate: true,
         minStartDate: new Date().toISOString().slice(0, 10),
-        minExitDate: "",
+        minExitDate: '',
         startValue: new Date().toISOString().slice(0, 10),
-        showComment1: false,
-        showComment2: false
+        exitValue: '',
+        hideExitDate: true,
+        displayInvalidExitDate: false
     };
 
 
+    // checks if the the chosen start date is not in the past
     changedStartDate = (event) => {
-        if (new Date(event.target.value) >= new Date()) {
+        if (event.target.value >= new Date().toISOString().slice(0, 10)) {
+            let nextDay = new Date(event.target.value);
+            nextDay.setDate(nextDay.getDate() + 1)
             this.setState({
-                hideDate: false,
+                hideExitDate: false,
                 startValue: event.target.value,
-                minExitDate: event.target.value,
-                showComment1: false,
+                minExitDate: nextDay.toISOString().slice(0, 10),
+                displayInvalidExitDate: false,
             })
         }
         else {
             this.setState({
-                showComment1: true,
-                hideDate: true,
+                hideExitDate: true,
             })
         }
-
-        // TODO: check legal startDate < ExitDate
+        this.checkExitBeforeStart(this.state.exitValue);
     }
 
-    checklegalDate = (event) => {
-        if (new Date(event.target.value) < new Date(this.state.startValue)) {
-            this.setState({showComment2: true});
+    changedExitDate = (event) => {
+        this.checkExitBeforeStart(event.target.value);
+    }
+
+    checkExitBeforeStart = (exitDate) => {
+        if (exitDate <= this.state.startValue) {
+            this.setState({displayInvalidExitDate: true});
         }
         else {
-            this.setState({showComment2: false});
+            this.setState({
+                exitValue: exitDate,
+                displayInvalidExitDate: false});
         }
     }
+
 
 
     render() {
@@ -50,14 +58,12 @@ class Input extends Component {
                 <InputLocation
                     place_holder="Insert location here..." />
                 <InputDates
-                    initValue={this.state.minStartDate}
-                    changeDate={(event) => this.changedStartDate(event)}
-                    show={this.state.hideDate}
                     minStart={this.state.minStartDate}
                     minExit={this.state.minExitDate}
-                    styleComment={this.state.showComment}
-                    legalDate={(event) => this.checklegalDate(event)}
-                // min_end={} //value-start + 1
+                    changeStartDate={(event) => this.changedStartDate(event)}
+                    changeExitDate={(event) => this.changedExitDate(event)}
+                    showExitCalendar={this.state.hideExitDate}
+                    invalidExitDate={this.state.displayInvalidExitDate}
                 />
                 <InputRooms/>
             </div>

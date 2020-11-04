@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import style from './App.css';
 import Input from './containers/Input/Input';
 import Hotels from './containers/Hotels/Hotels';
 import hotelPic from './assets/pic.JPG';
@@ -13,7 +13,7 @@ function App() {
         ]
     });
   return (
-    <div className="App">
+    <div className={style.App}>
       <h1>Find Hotel</h1>
       <Input/>
       <Hotels hotels={state.hotels}/>
