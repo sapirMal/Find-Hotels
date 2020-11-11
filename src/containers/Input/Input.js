@@ -7,9 +7,9 @@ import InputRooms from "./InputRooms/InputRooms";
 class Input extends Component {
     state = {
         minStartDate: new Date().toISOString().slice(0, 10),
-        minExitDate: '',
+        minExitDate: null,
         startValue: new Date().toISOString().slice(0, 10),
-        exitValue: '',
+        exitValue: null,
         hideExitDate: true,
         displayInvalidExitDate: false
     };
@@ -17,37 +17,33 @@ class Input extends Component {
 
     // checks if the the chosen start date is not in the past
     changedStartDate = (event) => {
-        if (event.target.value >= new Date().toISOString().slice(0, 10)) {
-            let nextDay = new Date(event.target.value);
-            nextDay.setDate(nextDay.getDate() + 1)
+        let nextDay = new Date(event.target.value);
+        nextDay.setDate(nextDay.getDate() + 1)
+        if (this.state.exitValue === null ||
+            this.state.exitValue > event.target.value) {
             this.setState({
                 hideExitDate: false,
                 startValue: event.target.value,
                 minExitDate: nextDay.toISOString().slice(0, 10),
-                displayInvalidExitDate: false,
+                displayInvalidExitDate: false
             })
         }
         else {
             this.setState({
-                hideExitDate: true,
+                startValue: event.target.value,
+                minExitDate: nextDay.toISOString().slice(0, 10),
+                hideExitDate: false,
+                displayInvalidExitDate: true
             })
         }
-        this.checkExitBeforeStart(this.state.exitValue);
+
     }
 
     changedExitDate = (event) => {
-        this.checkExitBeforeStart(event.target.value);
-    }
-
-    checkExitBeforeStart = (exitDate) => {
-        if (exitDate <= this.state.startValue) {
-            this.setState({displayInvalidExitDate: true});
-        }
-        else {
-            this.setState({
-                exitValue: exitDate,
-                displayInvalidExitDate: false});
-        }
+        this.setState({
+            exitValue: event.target.value,
+            displayInvalidExitDate: false
+        })
     }
 
 
