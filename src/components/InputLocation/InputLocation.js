@@ -2,7 +2,7 @@ import React from 'react';
 
 const input_location = (props) => {
     return (
-        <input
+        <input className={props.className}
             placeholder={props.place_holder}>
         </input>
     )

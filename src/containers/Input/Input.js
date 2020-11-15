@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import InputLocation from '../../components/InputLocation/InputLocation';
 import InputDates from '../../components/InputDates/InputDates';
-import InputRooms from "./InputRooms/InputRooms";
+import InputRooms from './InputRooms/InputRooms';
+import style from './Input.css';
 
 
 class Input extends Component {
@@ -50,10 +51,12 @@ class Input extends Component {
 
     render() {
         return (
-            <div>
+            <div className={style.Input}>
                 <InputLocation
+                    className={[style.Field, style.Location].join(' ')}
                     place_holder="Insert location here..." />
                 <InputDates
+                    className={[style.Field, style.Date].join(' ')}
                     minStart={this.state.minStartDate}
                     minExit={this.state.minExitDate}
                     changeStartDate={(event) => this.changedStartDate(event)}
@@ -61,7 +64,9 @@ class Input extends Component {
                     showExitCalendar={this.state.hideExitDate}
                     invalidExitDate={this.state.displayInvalidExitDate}
                 />
-                <InputRooms/>
+                <InputRooms
+                    className={[style.Field, style.Room].join(' ')} />
+                <button className={style.Search} > SEARCH </button>
             </div>
         )
     }

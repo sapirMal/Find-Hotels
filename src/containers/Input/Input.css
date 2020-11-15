@@ -1,0 +1,89 @@
+.Input {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: #EFF5FB;
+    width: 94%;
+    margin: auto;
+    padding: 1rem;
+    align-content: stretch;
+    justify-content: space-around;
+}
+
+.Input .Field {
+    box-sizing: border-box;
+    background-color: white;
+    border: none;
+    border-bottom: 3px solid #0489B1;
+    padding: 0.7rem;
+    margin: 0.5rem 0.2rem;
+    font-size: 1.3rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.Location {
+    flex: 100%
+}
+
+.Search {
+    flex: 100%;
+    background-color: #0489B1;
+    outline: none;
+    font-size: 1.3rem;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    padding: 0.7rem;
+    margin: 0.5rem 0.2rem;
+    color: white;
+}
+
+.Date {
+    flex: 45%;
+    align-content: left;
+    text-align: left;
+}
+
+.Room {
+    flex: 45%;
+}
+
+
+@media screen and (min-width: 480px) {}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1024px) {
+    .Input {
+
+        width: 850px;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+
+    .Input .Field {
+        height: 10vh;
+
+    }
+
+    .Location {
+        flex: 40%;
+    }
+
+    .Date {
+        flex: 25%;
+    }
+
+    .Room {
+        flex: 25%;
+    }
+
+    .Search {
+        flex: 25%;
+
+
+    }
+
+}
+
+@media screen and (min-width: 1280px) {}

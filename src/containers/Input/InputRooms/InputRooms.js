@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './InputRooms.css';
 import Aux from '../../../hoc/Auxiliary';
+import style from './InputRooms.css';
 
-class InputRooms extends Component{
+class InputRooms extends Component {
 
     state = {
         numOfRooms: 1,
@@ -12,51 +12,58 @@ class InputRooms extends Component{
     }
 
     incrementValueRooms = () => {
-        this.setState((prevState, props) =>
-        {
+        this.setState((prevState, props) => {
             if (prevState.numOfGuests <= prevState.numOfRooms + 1)
-                return {numOfGuests: prevState.numOfRooms + 1,
-                        showMinusGuests: true};
+                return {
+                    numOfGuests: prevState.numOfRooms + 1,
+                    showMinusGuests: true
+                };
         });
 
         this.setState((prevState, props) => {
-            return {numOfRooms: prevState.numOfRooms + 1,
-                    showMinusRooms: false};
+            return {
+                numOfRooms: prevState.numOfRooms + 1,
+                showMinusRooms: false
+            };
         });
     };
 
     decrementValueRooms = () => {
         this.setState((prevState, props) => {
-                if (prevState.numOfRooms > 2)
-                    return {numOfRooms: prevState.numOfRooms - 1};
-                else
-                    return {
-                        numOfRooms: prevState.numOfRooms - 1,
-                        showMinusRooms: true
-                    };
-            }
+            if (prevState.numOfRooms > 2)
+                return {numOfRooms: prevState.numOfRooms - 1};
+            else
+                return {
+                    numOfRooms: prevState.numOfRooms - 1,
+                    showMinusRooms: true
+                };
+        }
         )
     };
 
 
     incrementValueGuests = () => {
         this.setState((prevState, props) => {
-            if(prevState.numOfGuests + 1 > prevState.numOfRooms)
-                return {numOfGuests: prevState.numOfGuests + 1,
-                        showMinusGuests: false}
+            if (prevState.numOfGuests + 1 > prevState.numOfRooms)
+                return {
+                    numOfGuests: prevState.numOfGuests + 1,
+                    showMinusGuests: false
+                }
             else
-                return {numOfGuests: prevState.numOfGuests + 1,
-                    showMinusGuests: true}
+                return {
+                    numOfGuests: prevState.numOfGuests + 1,
+                    showMinusGuests: true
+                }
         });
     };
 
     decrementValueGuests = () => {
         this.setState((prevState, props) => {
-            if(prevState.numOfGuests -1 > prevState.numOfRooms)
+            if (prevState.numOfGuests - 1 > prevState.numOfRooms)
                 return {
                     numOfGuests: prevState.numOfGuests - 1
                 }
-            else if(prevState.numOfGuests -1 === prevState.numOfRooms)
+            else if (prevState.numOfGuests - 1 === prevState.numOfRooms)
                 return {
                     numOfGuests: prevState.numOfGuests - 1,
                     showMinusGuests: true
@@ -65,42 +72,60 @@ class InputRooms extends Component{
     };
 
 
-    render(){
+    render() {
         return (
-            <Aux className="input-group">
-                <label>Rooms:</label>
-                <input type="button"
-                       disabled={this.state.showMinusRooms}
-                       onClick={this.decrementValueRooms}
-                       value="-"
-                       className="button-minus"
-                       data-field="quantity"/>
-                <input type="number"
-                       value={this.state.numOfRooms}
-                       name="quantity"
-                       className="quantity-field" readOnly />
-                <input type="button"
-                       onClick={this.incrementValueRooms}
-                       value="+"
-                       className="button-plus"
-                       data-field="quantity"/>
+            <Aux >
+                <div className={[this.props.className, style.Row].join(' ')}>
+                    <input type='button'
+                        className={this.state.showMinusRooms ? [style.Button, style.Disabled].join(' ') : style.Button}
+                        disabled={this.state.showMinusRooms}
+                        onClick={this.decrementValueRooms}
+                        value='-'
+                        data-field='quantity' />
+                    <label
+                        className={style.Label}
+                        for='room'>Rooms</label>
 
-                 <label>Guests:</label>
-                <input type="button"
-                       disabled={this.state.showMinusGuests}
-                       onClick={this.decrementValueGuests}
-                       value="-"
-                       className="button-minus"
-                       data-field="quantity"/>
-                <input type="number"
-                       value={this.state.numOfGuests}
-                       name="quantity"
-                       className="quantity-field" readOnly />
-                <input type="button"
-                       onClick={this.incrementValueGuests}
-                       value="+"
-                       className="button-plus"
-                       data-field="quantity"/>
+                    <input
+                        className={style.InputField}
+                        type='number'
+                        value={this.state.numOfRooms}
+                        name='room'
+                        id='room'
+                    />
+                    <input type='button'
+                        className={style.Button}
+
+                        onClick={this.incrementValueRooms}
+                        value='+'
+                        data-field='quantity' />
+                </div>
+                <div className={[this.props.className, style.Row].join(' ')}>
+                    <input
+                        className={this.state.showMinusGuests ? [style.Button, style.Disabled].join(' ') : style.Button}
+                        type='button'
+                        disabled={this.state.showMinusGuests}
+                        onClick={this.decrementValueGuests}
+                        value='-'
+                        data-field='quantity' />
+                    <label
+                        className={style.Label}
+                        for='guests'>Guests</label>
+                    <input
+                        className={style.InputField}
+                        type='number'
+                        value={this.state.numOfGuests}
+                        name='guests'
+                        id='guests'
+                    />
+
+
+                    <input type='button'
+                        className={style.Button}
+                        onClick={this.incrementValueGuests}
+                        value='+'
+                        data-field='quantity' />
+                </div>
             </Aux>
         );
     }

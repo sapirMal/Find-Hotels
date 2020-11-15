@@ -16,7 +16,7 @@ function App() {
     <div className={style.App}>
       <h1>Find Hotels</h1>
       <Input/>
-      <Hotels hotels={state.hotels}/>
+      {/* <Hotels hotels={state.hotels}/> */}
     </div>
   );
 }
