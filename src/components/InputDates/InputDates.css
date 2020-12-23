@@ -1,11 +1,9 @@
-
-
 .Container {
     position: relative;
-    width: 80%;
-    align-content: center;
-    
-
+    width: 100%;
+    display: flex;
+    align-content: stretch;
+    justify-content: space-around;
 }
 
 
@@ -15,8 +13,9 @@
     text-align: center;
     border: none;
     outline: 0;
-    padding-top:6% ;
     background-color: none;
+    padding-top: 6%;
+    cursor: text;
 }
 
 .Label {
@@ -30,17 +29,25 @@
     font-family: 'Goldman', cursive;
 }
 
-.InputField:disabled, .Gray{
+.InputField:disabled,
+.Gray {
     background-color: white;
     color: gray;
+    cursor: not-allowed;
+
 }
 
 .Disabled {
     border-bottom-color: grey !important;
     color: grey;
+    cursor: not-allowed;
 }
 
 .Red {
     border-bottom-color: red !important;
     color: red;
+}
+
+input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
 }

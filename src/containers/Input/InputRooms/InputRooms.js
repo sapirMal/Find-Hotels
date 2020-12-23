@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Aux from '../../../hoc/Auxiliary';
 import style from './InputRooms.css';
 
 class InputRooms extends Component {
@@ -74,7 +73,7 @@ class InputRooms extends Component {
 
     render() {
         return (
-            <Aux >
+            <React.Fragment >
                 <div className={[this.props.className, style.Row].join(' ')}>
                     <input type='button'
                         className={this.state.showMinusRooms ? [style.Button, style.Disabled].join(' ') : style.Button}
@@ -118,15 +117,13 @@ class InputRooms extends Component {
                         name='guests'
                         id='guests'
                     />
-
-
                     <input type='button'
                         className={style.Button}
                         onClick={this.incrementValueGuests}
                         value='+'
                         data-field='quantity' />
                 </div>
-            </Aux>
+            </React.Fragment>
         );
     }
 }

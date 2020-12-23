@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../hoc/Auxiliary';
 import style from './InputDates.css';
 
 
@@ -7,7 +6,7 @@ import style from './InputDates.css';
 const input_dates = (props) => {
 
     return (
-        <Aux >
+        <React.Fragment >
             <div className={[props.className, style.Container].join(' ')}            >
                 <label
                     className={style.Label}
@@ -27,7 +26,7 @@ const input_dates = (props) => {
 
                 <label
                     className={props.showExitCalendar ? [style.Label, style.Gray].join(' ') :
-                    props.invalidExitDate ? [style.Label, style.Red].join(' ') : style.Label}
+                        props.invalidExitDate ? [style.Label, style.Red].join(' ') : style.Label}
                     for='exit'>Check out</label>
                 <input
 
@@ -43,7 +42,7 @@ const input_dates = (props) => {
             </div>
             {/*<label style={styleComment2}>Date must be after start date</label>*/}
             {/* TODO: handle message to user when typing invalid date*/}
-        </Aux >
+        </React.Fragment >
     )
 }
 
