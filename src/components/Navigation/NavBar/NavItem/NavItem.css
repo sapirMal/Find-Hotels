@@ -1,5 +1,6 @@
 .NavItem {
-    margin: 10px 0;
+    margin:  auto;
+    padding-left: 10px;
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -7,6 +8,7 @@
 
 .NavItem svg {
     height: 3rem;
+    width: 3rem;
     margin: auto;
 }
 
@@ -22,10 +24,12 @@
 .NavItem a:active , a.active{
     color: #0489B1;
     border-bottom: #0489B1;
+
 }
 
 .NavItem a:hover {
     color: #0489B1;
+    background-color: #ffffff;
 
 }
 
