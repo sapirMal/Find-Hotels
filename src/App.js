@@ -3,7 +3,7 @@ import style from './App.css';
 import Input from './containers/Input/Input';
 import Hotels from './containers/Hotels/Hotels';
 import hotelPic from './assets/pic.JPG';
-import NavBar from './components/Navigation/NavBar/NavBar';
+import Nav from './components/Navigation/Navigation';
 
 function App() {
   const [state, setState] = useState({
@@ -15,12 +15,12 @@ function App() {
   });
   return (
     <div className={style.App}>
-      <header>
-        <NavBar />
-      </header>
-      <h1>Find Hotels</h1>
-      <Input />
-      {/* <Hotels hotels={state.hotels}/> */}
+      <Nav />
+      <div className={style.Content}>
+        <h1>Find Hotels</h1>
+        <Input />
+        {/* <Hotels hotels={state.hotels}/> */}
+      </div>
     </div>
   );
 }

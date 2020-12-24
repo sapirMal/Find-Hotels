@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-
+// import {NavLink} from 'react-router-dom';
+import style from './NavItem.css';
 const navItem = (props) => (
-    <li>
-        <NavLink to={props.link} exact>
+    <li className={style.NavItem}>
+        <a href={props.link} >
             {props.children}
-        </NavLink>
+        </a>
     </li>
 );
 
